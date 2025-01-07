@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="/">My Page</a></li>
+                    <li><a href="/about">Know Me</a></li>
+                    <li><a href="/contact">Contact Me</a></li>
+                    <li><a href="/projects">My Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        
+    </div>
+    <div class="footer">
+        <nav>
+            <ul>
+                <li><a href="/">My Page</a></li>
+                <li><a href="/about">Know Me</a></li>
+                <li><a href="/contact">Contact Me</a></li>
+                <li><a href="/projects">My Projects</a></li>
+            </ul>
+
+        </nav>
+        <div class="contact">
+            <address>
+                <h2>Kritika</h2>
+                <h3>abc@gmail.com</h3>
+                <p>Copy@2025 abc@gmail.com</p>
+            </address>
+        </div>
+    </div>
+    <script src=".//static/js/script.js"></script>
+</body>
+</html>

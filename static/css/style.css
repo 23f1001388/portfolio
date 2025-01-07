@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --background-color:#252525;
+    --text-color:#ede5e5;
+    --navbar-bg-color:#1f1e1e;
+    /* #1e1d1d; */
+    --navbar-text-color:#ffffff;
+    --button-bg-color:#ffffff;
+    --button-text-color:#000000;
+    --primary-color: #4CAF50;
+    --secondary-color: #333;
+    --sidebar-width:15vw;
+}
+
+[data-theme='light']{
+    --background-color:#ffffff;
+    --text-color:#000000;
+    --navbar-bg-color:#f2ebeb;
+    --navbar-text-color:#0b0b0b;
+    --button-bg-color:#4c4a4a;
+    --button-text-color:#fbf5f5;
+    --primary-color: #4CAF50;
+    --secondary-color: #333;
+}
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+.container{
+    display: flex;
+    font-family: sans-serif;
+    height:80vh;
+}
+
+
+/*Sidebar Menu*/
+
+.sidebar{
+    display: flex;
+    height:inherit;
+    width:var(--sidebar-width);
+    background-color: var(--navbar-bg-color);
+    color:var(--navbar-text-color);
+    /* padding: 20px; */
+}
+
+.sidebar nav{
+    margin-top: 50px;
+}
+.sidebar nav li{
+    list-style: none;
+    padding: 20px;
+}
+.sidebar nav li a{
+    text-decoration: none;
+    color: var(--button-bg-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar nav li a:hover{
+    transform: scale(1.2rem);
+    color: red;
+}
+
+
+/*Main Content Area*/
+
+.main{
+    background-color: var(--background-color);
+    color:var(--text-color);
+    width: calc(100vw - var(--sidebar-width));
+}
+
+.biocontainer{
+    margin-top: 100px;
+    display: flex;
+    /* background-color: #4c4a4a; */
+    justify-content: space-around;
+    align-items: center; 
+}
+
+.profileinfo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding:20px;
+    height: 50vh;
+}
+
+.profileinfo *{
+    margin:10px;
+}
+.profileinfo h1{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.profileinfo h2{
+    font-family:cursive;
+}
+.buttons button{
+    background-color: var(--button-text-color);
+    color: var(--button-bg-color);
+    border-radius: 20px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.buttons button:hover{
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    transform: scale(1.5rem);
+}
+
+.profilepic img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 50%; 
+}
+
+
+/* Basic styling for the span that serves as a button */
+.toggle-btn {
+    position: relative; /* Position it absolutely within the header */
+    top: 10px; /* Space from the top of the header */
+    left: 10px; /* Space from the left edge of the header */
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+/* Footer Section*/
+.footer{
+    display: flex;
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    justify-content: space-between;
+    /* align-items: center; */
+    height:20vh;
+    background-color:#333;
+    color: white;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+.footer nav {
+    display: flex;
+    justify-content:space-between;
+    /* width: 50vw; */
+    flex: 1; /* Allow nav to take up available space */
+    flex-wrap: wrap; /* Wrap items on small screens */
+    padding: 20px;
+}
+
+.footer nav ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Remove default padding */
+    margin: 0;
+    list-style: none;
+}
+
+.footer nav li {
+    margin: 5px 0; /* Add some spacing between list items */
+}
+
+.footer nav a {
+    text-decoration: none;
+    color: var(--button-bg-color);
+    font-size: 16px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer nav li a:hover {
+    transform: scale(1.1); /* Slightly smaller scale for modern look */
+    color: red;
+}
+
+/* Contact info */
+.footer .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.footer .contact h2,
+.footer .contact h3 {
+    margin: 5px 0;
+}
+
+.footer .contact p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        height: auto; /* Let the height adjust */
+    }
+
+    .footer nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer .contact {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .footer nav ul {
+        flex-direction: row; /* Change navigation to row layout on small screens */
+    }
+
+    .footer nav li {
+        margin: 0 10px; /* Add horizontal spacing between links */
+    }
+}
