@@ -3,43 +3,54 @@
 :root {
     --background-color:#252525;
     --text-color:#ede5e5;
+
     --navbar-bg-color:#1f1e1e;
     --navbar-text-color:#ffffff;
-    --button-bg-color:#ffffff;
-    --button-text-color:#000000;
-    --primary-color: #5198f5;
-    --secondary-color: #837f7f;
+    
+    --button-bg-color:#000000;
+    --button-text-color:#ffffff;
+        
     --footer-bg-color: #333;
     --footer-text-color:white;
-    --sidebar-width:20vh;
+    
+    --menu-hover-color: rgb(248, 131, 7);
+    --primary-color: #5198f5;
+    --secondary-color: #837f7f;
+    --sidebar-width:15vw;
     --footer-height:20vh:
 }
 
 [data-theme='dark'] {
     --background-color:#252525;
     --text-color:#ede5e5;
+
     --navbar-bg-color:#1f1e1e;
     --navbar-text-color:#ffffff;
-    --button-bg-color:#ffffff;
-    --button-text-color:#000000;
-    --primary-color: #5198f5;
-    --secondary-color: #837f7f;
+
+    --button-text-color:#ffffff;
+    --button-bg-color:#000000;
+
     --footer-bg-color: #333;
     --footer-text-color:white;
-    --sidebar-width:20vh;
-    --footer-height:20vh:
+
+    --primary-color: #5198f5;
+    --secondary-color: #837f7f;
+   
 }
 
 
 [data-theme='light']{
     --background-color:#ffffff;
     --text-color:#000000;
+
     --navbar-bg-color:#f2ebeb;
     --navbar-text-color:#0b0b0b;
-    --button-bg-color:#4c4a4a;
-    --button-text-color:#fbf5f5;
+
+    --button-bg-color:#fbf5f5;
+    --button-text-color:#4c4a4a;
+
     --footer-bg-color: #615c5c;
-    --footer-text-color:#fbf5f5;
+    --footer-text-color:#f9f4f4;
 }
 
 *{
@@ -48,7 +59,7 @@
 }
 
 html, body {
-    height: 80%;  /* Ensure full height for the body and html */
+    height: 100%;  /* Ensure full height for the body and html */
 }
 
 .container{
@@ -66,9 +77,8 @@ html, body {
     width:var(--sidebar-width);
     background-color: var(--navbar-bg-color);
     color:var(--navbar-text-color);
-    /* padding: 20px; */
-    /* transition: transform 1.0s ease; */
-    
+    /* padding: 10px; */
+    /* transition: transform 1.0s ease; */    
 }
 
 .sidebar nav{
@@ -80,26 +90,90 @@ html, body {
 }
 .sidebar nav li a{
     text-decoration: none;
-    color: var(--button-bg-color);
+    color: var(--button-text-color);
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .sidebar nav li a:hover{
     transform: scale(1.2rem);
-    color: red;
+    color:var(--menu-hover-color);
 }
 
 .sidebar-hidden{
     display: none;
     transform: translate(-200px);
 }
-/*Main Content Area*/
 
+/*Main Content Area*/
 .main{
     background-color: var(--background-color);
     color:var(--text-color);
     width: calc(100vw - var(--sidebar-width));
-    /* height:inherit; */
+    overflow: hidden;
+    height:inherit;
+}
+
+.btnpanel {
+    display: flex;
+    justify-content: space-between; /* Space items on the left and right */
+    align-items: center;  /* Vertically center the items */
+    padding: 10px;  /* Padding to create some space */
+}
+
+/* Styling for the sidebar toggle button */
+.toggle-btn button {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Theme Switcher Styling */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* Center both icons */
+    position: relative;       /* So that the icons can be positioned absolutely inside */
+    gap: 10px;                /* Space between icons */
+    color: var(--text-color);
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+/* Initially position the icons on top of each other using absolute positioning */
+.theme-switcher span {
+    position: absolute;  /* Absolute positioning within the theme-switcher container */
+    transition: opacity 0.3s ease;  /* Smooth transition */
+}
+
+/* Sun Icon (light mode) */
+.sun-icon {
+    opacity: 1;  /* Initially visible in light mode */
+}
+
+/* Moon Icon (dark mode) */
+.moon-icon {
+    opacity: 0;  /* Initially hidden in light mode */
+}
+
+/* When switching to dark mode, hide sun and show moon */
+[data-theme='dark'] .sun-icon {
+    opacity: 0;  /* Hide sun icon in dark mode */
+}
+
+[data-theme='dark'] .moon-icon {
+    opacity: 1;  /* Show moon icon in dark mode */
+}
+
+/* When switching to light mode, show sun and hide moon */
+[data-theme='light'] .sun-icon {
+    opacity: 1;  /* Show sun icon in light mode */
+}
+
+[data-theme='light'] .moon-icon {
+    opacity: 0;  /* Hide moon icon in light mode */
 }
 
 .main-extend{
@@ -134,20 +208,20 @@ html, body {
 }
 
 .btn{
-    background-color: var(--button-text-color);
-    color: var(--button-bg-color);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border-radius: 20px;
     padding: 15px 30px;
     cursor: pointer;
-    font-size:larger;
+    font-size:large;
     transition: transform 0.3s ease, color 0.3s ease;
     margin:5px 0px;
     align-self: center;  
 }
 
 .btn:hover{
-    background-color: var(--button-bg-color);
-    color: var(--button-text-color);
+    background-color: var(--button-text-color);
+    color: var(--button-bg-color);
     transform: scale(1.5rem);
 }
 
@@ -205,18 +279,7 @@ html, body {
 
 
 
-/* Basic styling for the span that serves as a button */
-.toggle-btn {
-    position: relative; /* Position it absolutely within the header */
-    top: 10px; /* Space from the top of the header */
-    left: 10px; /* Space from the left edge of the header */
-    background-color: transparent;
-    color: var(--text-color);
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-}
+
 
 
 /* Footer Section*/
@@ -230,8 +293,6 @@ html, body {
     padding: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
-
-
 
 .footer nav {
     display: flex;
@@ -247,23 +308,24 @@ html, body {
     flex-direction: column;
     padding: 0; /* Remove default padding */
     margin: 0;
-    list-style: none;
+    /* list-style: none; */
 }
 
 .footer nav li {
+    list-style: none;
     margin: 5px 0; /* Add some spacing between list items */
 }
 
-.footer nav a {
+.footer nav li a{
     text-decoration: none;
-    color: var(--button-bg-color);
+    color: var(--footer-text-color); 
     font-size: 16px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .footer nav li a:hover {
     transform: scale(1.1); /* Slightly smaller scale for modern look */
-    color: red;
+    color:var(--menu-hover-color);
 }
 
 /* Contact info */
@@ -301,12 +363,10 @@ hr {
     .sidebar {
         width: 0; 
         position: absolute; 
-        height: 100%; 
         left: 0; 
         background-color: var(--navbar-bg-color);
         overflow: hidden; 
     }
-
     
     /* When Sidebar is toggled, it will have a width of var(--sidebar-width) */
     .sidebar-visible {
@@ -317,6 +377,7 @@ hr {
     .main {
         transition: width 0.3s ease, margin-left 0.3s ease;
         width: 100vw; /* Full width when sidebar is hidden */
+        overflow: hidden;
     }
 
     /* When sidebar is visible, shift main content to the right */
@@ -325,11 +386,9 @@ hr {
         width: calc(100vw - var(--sidebar-width)); /* Adjust width when sidebar is visible */
     }
 
-
     .footer {
         flex-direction: column;
         align-items: center;
-        height: auto; /* Let the height adjust */
     }
 
     .footer nav {

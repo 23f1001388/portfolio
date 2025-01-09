@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>Portfolio</title>
 </head>
 <body>
@@ -19,8 +20,19 @@
             </nav>
         </div>
         <div class="main">
-            <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
-            <button class="btn" onclick="toggleTheme()">Theme</button>
+            <div class="btnpanel">
+                <div class="toggle-btn">
+                    <button onclick="toggleSidebar()">&#9776;</button>
+                </div>
+                <button class="btn" onclick="toggleTheme()">Theme</button>
+                <div class="theme-switcher">
+                    <!-- Sun Icon (light mode) -->
+                    <span class="material-symbols-outlined sun-icon" onclick="toggleTheme()"">light_mode</span>
+                    <!-- Moon Icon (dark mode) -->
+                    <span class="material-symbols-outlined moon-icon" onclick="toggleTheme()">dark_mode</span>
+                </div>
+
+            </div>
             {% block content %}
 
             {% endblock %}
@@ -28,15 +40,17 @@
         
     </div>
     <div class="footer">
-        <nav>
-            <ul>
-                <li><a href="/">My Page</a></li>
-                <li><a href="/about">Know Me</a></li>
-                <li><a href="/contact">Contact Me</a></li>
-                <li><a href="/projects">My Projects</a></li>
-            </ul>
+        <div class="footernav">
+            <nav>
+                <ul>
+                    <li><a href="/">My Page</a></li>
+                    <li><a href="/about">Know Me</a></li>
+                    <li><a href="/contact">Contact Me</a></li>
+                    <li><a href="/projects">My Projects</a></li>
+                </ul>
+            </nav>
+        </div>
 
-        </nav>
         <div class="contact">
             <address>
                 <h2>Kritika</h2>
