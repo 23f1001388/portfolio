@@ -1,13 +1,17 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="biocontainer">
-    <h1>Contact</h1>
-        <div class="profileinfo">
-            <h1>Hi I am Techiiee</h1>
-            <h2>Kritika</h2>
-            <p>Developer in Python,Java and lot more....</p>
-            <div class="buttons"><button>Explore</button></div>
-        </div>
-        
+<div class="form-container">
+        <div><h3>For Work Assignment/General Query</h3></div>
+        <hr />
+        <form>
+            <div><label for="email">Email</label></div>
+            <div><input type="email" placeholder="Enter you email"/></div>
+            <div><label for="phone">Phone No</label></div>
+            <div><input type="phone" placeholder="Enter Your Phone"/></div>
+            <div><label for="query">Query Details</label></div>
+            <div><textarea type="query" placeholder="Enter Your Query"/></textarea></div>
+            <button class="btn">Submit</button>
+        </form>
 </div>
 {% endblock %} 

@@ -4,14 +4,32 @@
     --background-color:#252525;
     --text-color:#ede5e5;
     --navbar-bg-color:#1f1e1e;
-    /* #1e1d1d; */
     --navbar-text-color:#ffffff;
     --button-bg-color:#ffffff;
     --button-text-color:#000000;
-    --primary-color: #4CAF50;
-    --secondary-color: #333;
-    --sidebar-width:15vw;
+    --primary-color: #5198f5;
+    --secondary-color: #837f7f;
+    --footer-bg-color: #333;
+    --footer-text-color:white;
+    --sidebar-width:20vh;
+    --footer-height:20vh:
 }
+
+[data-theme='dark'] {
+    --background-color:#252525;
+    --text-color:#ede5e5;
+    --navbar-bg-color:#1f1e1e;
+    --navbar-text-color:#ffffff;
+    --button-bg-color:#ffffff;
+    --button-text-color:#000000;
+    --primary-color: #5198f5;
+    --secondary-color: #837f7f;
+    --footer-bg-color: #333;
+    --footer-text-color:white;
+    --sidebar-width:20vh;
+    --footer-height:20vh:
+}
+
 
 [data-theme='light']{
     --background-color:#ffffff;
@@ -20,13 +38,17 @@
     --navbar-text-color:#0b0b0b;
     --button-bg-color:#4c4a4a;
     --button-text-color:#fbf5f5;
-    --primary-color: #4CAF50;
-    --secondary-color: #333;
+    --footer-bg-color: #615c5c;
+    --footer-text-color:#fbf5f5;
 }
 
 *{
     margin:0px;
     padding: 0px;
+}
+
+html, body {
+    height: 80%;  /* Ensure full height for the body and html */
 }
 
 .container{
@@ -45,6 +67,8 @@
     background-color: var(--navbar-bg-color);
     color:var(--navbar-text-color);
     /* padding: 20px; */
+    /* transition: transform 1.0s ease; */
+    
 }
 
 .sidebar nav{
@@ -65,13 +89,21 @@
     color: red;
 }
 
-
+.sidebar-hidden{
+    display: none;
+    transform: translate(-200px);
+}
 /*Main Content Area*/
 
 .main{
     background-color: var(--background-color);
     color:var(--text-color);
     width: calc(100vw - var(--sidebar-width));
+    /* height:inherit; */
+}
+
+.main-extend{
+    width: 100vw;
 }
 
 .biocontainer{
@@ -100,16 +132,20 @@
 .profileinfo h2{
     font-family:cursive;
 }
-.buttons button{
+
+.btn{
     background-color: var(--button-text-color);
     color: var(--button-bg-color);
     border-radius: 20px;
-    padding: 10px 30px;
+    padding: 15px 30px;
     cursor: pointer;
+    font-size:larger;
     transition: transform 0.3s ease, color 0.3s ease;
+    margin:5px 0px;
+    align-self: center;  
 }
 
-.buttons button:hover{
+.btn:hover{
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     transform: scale(1.5rem);
@@ -120,6 +156,53 @@
     height: auto; 
     border-radius: 50%; 
 }
+
+.form-container{
+    display: flex;
+    flex-direction: column; /* Stack children (h3 and form) vertically */
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+}
+
+.form-container h3{
+    text-align: center;
+}
+
+.form-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: #0c0c0c; */
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;  
+    padding:20px;
+    border-radius: 20px;
+    width: 40%;
+}
+
+.form-container form input{
+    width:100%;
+    height:30px;
+    padding:5px;
+    margin: 5px 0px;
+    border-style: solid;
+}
+
+
+.form-container form textarea{
+    width:100%;
+    height:100px;
+    padding:5px;
+    margin: 5px 0px;
+    border-style: solid;
+}
+
+.form-container form button{
+    width:20%;
+    /* align-self: center;   */
+}
+
 
 
 /* Basic styling for the span that serves as a button */
@@ -141,10 +224,9 @@
     display: flex;
     flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
     justify-content: space-between;
-    /* align-items: center; */
-    height:20vh;
-    background-color:#333;
-    color: white;
+    height:var(--footer-height);
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
     padding: 20px;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -202,8 +284,48 @@
     font-size: 14px;
 }
 
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;  /* Color of the line */
+    margin: 20px auto;       /* Margin above and below the line */
+    width: 80%;              /* Line width */
+}
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
+    :root{
+        --sidebar-width:200px;
+    }
+    .sidebar {
+        width: 0; 
+        position: absolute; 
+        height: 100%; 
+        left: 0; 
+        background-color: var(--navbar-bg-color);
+        overflow: hidden; 
+    }
+
+    
+    /* When Sidebar is toggled, it will have a width of var(--sidebar-width) */
+    .sidebar-visible {
+        width: var(--sidebar-width);
+    }
+
+    /* Main content when sidebar is hidden or visible */
+    .main {
+        transition: width 0.3s ease, margin-left 0.3s ease;
+        width: 100vw; /* Full width when sidebar is hidden */
+    }
+
+    /* When sidebar is visible, shift main content to the right */
+    .main-extend {
+        margin-left: var(--sidebar-width); /* Push main content to the right */
+        width: calc(100vw - var(--sidebar-width)); /* Adjust width when sidebar is visible */
+    }
+
+
     .footer {
         flex-direction: column;
         align-items: center;
